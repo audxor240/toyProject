@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/toy?serverTimezone=Asia/Seoul&useSSL=false
+    username: root
+    password: Tmfrl3015!
+  jpa:
+    database: mysql
+    show-sql: true
+  security:
+    user:
+      name: user
+      password: Tmfrl3015!
