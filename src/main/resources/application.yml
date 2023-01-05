@@ -19,10 +19,10 @@ spring:
 
 app:
   ########### KAKAO
-  kakao-client-id: ca030a4f9bf9d299095948d15d0982d2
+  kakao-client-id: cbcfa0f76225b826f0f62a1b898f008e
   kakao-request-token-uri: https://kauth.kakao.com/oauth/authorize
   kakao-access-token-uri: https://kauth.kakao.com/oauth/token
-  kakao-api-uri: https://kapi.kakao.com/v2
+  kakao-api-uri: https://kapi.kakao.com/v2/user/me
   ########### GOOGLE
   google-client-id: 962520289844-hgpq28i60v460goj8qapo3vrao72qrnv.apps.googleusercontent.com
   google-client-secret: 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
@@ -39,6 +39,3 @@ app:
 
 cos:
   key: dkanrjskzl123
-
-server:
-  port: 2082

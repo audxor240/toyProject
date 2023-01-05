@@ -3,7 +3,7 @@ package com.toyProject.model;
 import lombok.Data;
 
 @Data
-public class SocialProfile {
+public class NaverProfile {
 
     public String resultcode;
     public String message;

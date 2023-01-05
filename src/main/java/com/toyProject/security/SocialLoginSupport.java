@@ -63,9 +63,9 @@ public class SocialLoginSupport {
         String state = generateState();
         request.getSession().setAttribute("state", state);
 
-        model.addAttribute("oauthUrlForGoogle", getSocialOauthUrl("GOOGLE",appProperties.getHost() + "/login/google", state));
+        model.addAttribute("oauthUrlForGoogle", getSocialOauthUrl("GOOGLE",appProperties.getHost() + "/auth/google/callback", state));
         model.addAttribute("oauthUrlForNaver", getSocialOauthUrl("NAVER",appProperties.getHost() + "/auth/naver/callback", state));
-        model.addAttribute("oauthUrlForKakao", getSocialOauthUrl("KAKAO",appProperties.getHost()+"/login/kakao", state));
+        model.addAttribute("oauthUrlForKakao", getSocialOauthUrl("KAKAO",appProperties.getHost()+"/auth/kakao/callback", state));
 
 
     }

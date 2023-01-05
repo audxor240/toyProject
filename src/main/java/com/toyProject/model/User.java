@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -43,5 +44,4 @@ public class User {
     @CreationTimestamp    // 시간이 자동 입력
     private Timestamp createDate;
 
-    private Collection<? extends GrantedAuthority> authorities;
 }
