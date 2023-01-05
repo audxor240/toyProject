@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 페이지</title>
+</head>
+<body>
+<h3>로그인 페이지</h3>
+<form th:action="@{/login}" method="post">
+    아이디 : <input type="text" name="username" value="">
+    비밀번호 : <input type="password" name="password" value="">
+    <button type="submit">로그인</button>
+</form>
+<a th:href="@{/signUpForm}">회원가입</a>
+<br>
+
+<ul>
+    <li><a th:href="${oauthUrlForKakao}"><img th:src="@{/assets/img/kakao_login_medium_btn.png}"></a></li>
+    <li><a th:href="${oauthUrlForNaver}"><img th:src="@{/assets/img/naver_login_btnG.png}" style="width: 182px;"></a>
+    </li>
+    <li></li>
+</ul>
+
+
+</body>
+</html>

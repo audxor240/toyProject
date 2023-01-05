@@ -7,7 +7,38 @@ spring:
   jpa:
     database: mysql
     show-sql: true
+    hibernate:
+      ddl-auto: update	#create : 기존 테이블이 있을 경우 삭제하고 만들어준다(최초에만 셋팅하여 사용), update : 기존에 있는 테이블에 데이터를 추가 또는 업데이트한다
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false		# true : JPA의 기본 전략을 따라간다, false : JPA의 기본 전략을 따라가지 않는다.
   security:
     user:
       name: user
       password: Tmfrl3015!
+
+app:
+  ########### KAKAO
+  kakao-client-id: ca030a4f9bf9d299095948d15d0982d2
+  kakao-request-token-uri: https://kauth.kakao.com/oauth/authorize
+  kakao-access-token-uri: https://kauth.kakao.com/oauth/token
+  kakao-api-uri: https://kapi.kakao.com/v2
+  ########### GOOGLE
+  google-client-id: 962520289844-hgpq28i60v460goj8qapo3vrao72qrnv.apps.googleusercontent.com
+  google-client-secret: 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
+  google-request-token-uri: https://accounts.google.com/o/oauth2/v2/auth
+  google-access-token-uri: https://oauth2.googleapis.com/token
+  google-api-uri: https://www.googleapis.com/oauth2/v3
+  ########### NAVER
+  naver-client-id: WeRJ80MOiVMEjCW6Si27
+  naver-client-secret: 8iG2qCMNTq
+  naver-request-token-uri: https://nid.naver.com/oauth2.0/authorize
+  naver-access-token-uri: https://nid.naver.com/oauth2.0/token
+  naver-api-uri: https://openapi.naver.com/v1/nid/me
+  host: http://localhost:8080
+
+cos:
+  key: dkanrjskzl123
+
+server:
+  port: 2082
