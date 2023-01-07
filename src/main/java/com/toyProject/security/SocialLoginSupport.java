@@ -19,9 +19,7 @@ public class SocialLoginSupport {
     private final AppProperties appProperties;
 
     public String getSocialOauthUrl(String type, String redirectUri, String state) {
-        System.out.println("type >> "+type);
-        System.out.println("redirectUri >> "+redirectUri);
-        System.out.println("state >> "+state);
+
         if (type.equals("GOOGLE")) {
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(appProperties.getGoogleRequestTokenUri())
                     .queryParam("client_id", appProperties.getGoogleClientId())

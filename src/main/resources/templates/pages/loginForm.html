@@ -10,8 +10,12 @@
     아이디 : <input type="text" name="username" value="">
     비밀번호 : <input type="password" name="password" value="">
     <button type="submit">로그인</button>
+    <div>
+        <input type="checkbox" class="checkbox_style" id="remember-me" name="remember-me">
+        <label for="remember-me">로그인 상태 유지</label>
+    </div>
 </form>
-<a th:href="@{/signUpForm}">회원가입</a>
+<a th:href="@{/auth/signUpForm}">회원가입</a>
 <br>
 
 <ul>

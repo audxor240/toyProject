@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 public class PrincipalDetail implements UserDetails {
@@ -15,6 +16,14 @@ public class PrincipalDetail implements UserDetails {
 
     public PrincipalDetail(User user) {
         this.user = user;
+    }
+
+    public int getId() {
+        return user.getId();
+    }
+
+    public List<String> getRols(){
+        return user.getRoles();
     }
 
     @Override

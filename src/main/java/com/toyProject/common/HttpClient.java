@@ -209,7 +209,7 @@ public class HttpClient {
         StringBuilder postData = new StringBuilder();
 
         URL url = new URL(targetUrl); // 호출할 url
-        System.out.println("url : " + targetUrl);
+
 
         try{
 
@@ -226,7 +226,7 @@ public class HttpClient {
 
 
             int responseCode = conn.getResponseCode();
-            System.out.println("Response Code : " + responseCode);
+
             Charset charset = Charset.forName("UTF-8");
 
             if(responseCode != 200) {

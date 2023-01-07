@@ -1,7 +1,12 @@
 package com.toyProject.security;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.toyProject.config.auth.PrincipalDetail;
 import com.toyProject.model.User;
+import com.toyProject.properties.AppProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -25,6 +30,12 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
     private RequestCache requestCache = new HttpSessionRequestCache();
 
+    @Autowired
+    private AppProperties app;
+
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws ServletException, IOException {
@@ -32,23 +43,23 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         log.info("onAuthenticationSuccess!");
 
         //FormWebAuthenticationDetails form = (FormWebAuthenticationDetails) authentication.getDetails();
-        //boolean remember = form.getRemember();
+        FormWebAuthenticationDetails form = new FormWebAuthenticationDetails(request);
+        boolean remember = form.getRemember();
 
-        User user = (User) authentication.getPrincipal();
-
+        PrincipalDetail user = (PrincipalDetail) authentication.getPrincipal();
         // session setting
         //request.getSession().setAttribute(GlobalConstant.SESSION_USER_KEY, user);
-
-        /*if (remember == true) {
-            String jwtToken = JWT.create()
+        if (remember == true) {
+            /*String jwtToken = JWT.create()
                     .withExpiresAt(new Date(System.currentTimeMillis() + Integer.parseInt(app.getJwtLimit())))
                     .withClaim("key", user.getId())
-                    .sign(Algorithm.HMAC512(app.getJwtSecret()));
+                    .sign(Algorithm.HMAC512(app.getJwtSecret()));*/
+            String jwtToken = jwtTokenProvider.createToken(user.getUsername(),user.getRols());
 
-            Cookie myCookie = new Cookie("obscure-remember-me", jwtToken);
+            Cookie myCookie = new Cookie("toy-remember-me", jwtToken);
             myCookie.setMaxAge(Integer.parseInt(app.getJwtLimit()));  // 7일동안 유효
             response.addCookie(myCookie);
-        }*/
+        }
         response.setStatus(HttpServletResponse.SC_OK);
 
         resultRedirectStrategy(request, response, authentication);
@@ -59,12 +70,15 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 
         if (savedRequest != null) {
+
             String targetUrl = savedRequest.getRedirectUrl();
             redirectStrategy.sendRedirect(request, response, targetUrl);
         } else {
             //redirectStrategy.sendRedirect(request, response, app.getHost());
-            String targetUrl = savedRequest.getRedirectUrl();
-            redirectStrategy.sendRedirect(request, response, targetUrl);
+            //String targetUrl = savedRequest.getRedirectUrl();
+            //redirectStrategy.sendRedirect(request, response, targetUrl);
+
+            redirectStrategy.sendRedirect(request, response, app.getHost());
         }
     }
 }

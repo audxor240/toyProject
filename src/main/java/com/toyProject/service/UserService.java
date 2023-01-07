@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collections;
 
 @Slf4j
 @Service
@@ -28,7 +29,9 @@ public class UserService {
                 .username(dto.getUserId())
                 .password(bCryptPasswordEncoder.encode(dto.getPassword()))
                 .email(dto.getEmail())
+                .oauth(dto.getOauth())
                 .role(RoleType.USER)
+                .roles(Collections.singletonList("ROLE_USER"))
                 .build();
 
         userRepository.save(user);

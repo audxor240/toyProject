@@ -16,6 +16,13 @@ spring:
     user:
       name: user
       password: Tmfrl3015!
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
 
 app:
   ########### KAKAO
@@ -24,11 +31,11 @@ app:
   kakao-access-token-uri: https://kauth.kakao.com/oauth/token
   kakao-api-uri: https://kapi.kakao.com/v2/user/me
   ########### GOOGLE
-  google-client-id: 962520289844-hgpq28i60v460goj8qapo3vrao72qrnv.apps.googleusercontent.com
-  google-client-secret: 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
+  google-client-id: 386485944917-6kga6cv3m9dkiobbcbcg7e5bntqup9ej.apps.googleusercontent.com
+  google-client-secret: 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
   google-request-token-uri: https://accounts.google.com/o/oauth2/v2/auth
   google-access-token-uri: https://oauth2.googleapis.com/token
-  google-api-uri: https://www.googleapis.com/oauth2/v3
+  google-api-uri: https://www.googleapis.com/oauth2/v3/userinfo
   ########### NAVER
   naver-client-id: WeRJ80MOiVMEjCW6Si27
   naver-client-secret: 8iG2qCMNTq
@@ -36,6 +43,9 @@ app:
   naver-access-token-uri: https://nid.naver.com/oauth2.0/token
   naver-api-uri: https://openapi.naver.com/v1/nid/me
   host: http://localhost:8080
+  ########### JWT
+  jwt-secret: soogoongjaa
+  jwt-limit: 604800000
 
 cos:
   key: dkanrjskzl123
